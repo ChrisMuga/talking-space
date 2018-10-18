@@ -33,7 +33,7 @@
                                 <h4 class="c">Email Address* :</h4>
                             </div>
                             <div class="sign-up2">
-                                <input type="text" class="text"  pattern="[a-z.]*[@]\strathmore.edu" name = "email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}" required>
+                                <input type="text" class="text"  id="email" name = "email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}" required>
                             </div>
                             <div class="clearfix"> </div>
                         </div>
@@ -82,13 +82,50 @@
                             <div class="clearfix"> </div>
                         </div>
                     
-                            <input type="submit" value="Register">
+                            <input id="reg" type="submit" value="Register">
                     </div>
                 </div>
 <!-- //register -->
 </form>
 <!-- //login-page -->
 			<div class="clearfix"> </div>
+
+            <script>
+            
+            $('#email').on('keypress', function(){
+            str = $('#email').val();
+            str = str.split('@').slice(1);
+            
+            var allowedDomains = [ 'strathmore.edu' ];
+            
+            if ($.inArray(str[0], allowedDomains) !== -1) 
+                {
+                    $('#reg').show();
+                }
+                else
+                {
+                    $('#reg').hide();
+                }
+            });
+
+
+            $('#email').on('keyup', function(){
+            str = $('#email').val();
+            str = str.split('@').slice(1);
+            
+            var allowedDomains = [ 'strathmore.edu' ];
+            
+            if ($.inArray(str[0], allowedDomains) !== -1) 
+                {
+                    $('#reg').show();
+                }
+                else
+                {
+                    $('#reg').hide();
+                }
+            });
+
+            </script>
 <?php 
     #include('footer.php'); 
 ?>
